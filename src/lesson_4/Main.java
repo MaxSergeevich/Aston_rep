@@ -21,7 +21,7 @@ public class Main {
         sonya.run(250);
         sonya.swim(3);
 
-        Bowl bowl = new Bowl(10);
+        Bowl bowl = new Bowl();
         System.out.println("В миске: " + bowl.getFoodAmount() + " единиц еды");
 
         System.out.println("Первая попытка котов поесть ");
@@ -51,9 +51,9 @@ public class Main {
 
         List<Shape> shapes = new ArrayList<>();
 
-        shapes.add(new Circle(8.0, "Белый", "Чёрный"));
-        shapes.add(new Rectangle(44.0, 2.0, "Зеленый", "Белый"));
-        shapes.add(new Triangle(5.0, 8.0, 5.0, "Зелёный", "Жёлтый"));
+        shapes.add(new Circle("Чёрный", "Белый",8.0 ));
+        shapes.add(new Rectangle("Зеленый", "Белый", 4.0,9));
+        shapes.add(new Triangle("Зелёный", "Жёлтый",5.0, 8.0, 5.0));
 
         for (Shape shape : shapes) {
             shape.printInfo();

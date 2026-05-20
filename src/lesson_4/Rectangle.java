@@ -1,16 +1,14 @@
 package lesson_4;
 
-public class Rectangle implements Shape {
+public class Rectangle extends Figure {
     private double width;
     private double height;
-    private String fillColor;
-    private String borderColor;
 
-    public Rectangle(double width, double height, String fillColor, String borderColor) {
+
+    public Rectangle(String fillColor, String borderColor, double width, double height) {
+        super(fillColor, borderColor);
         this.width = width;
         this.height = height;
-        this.fillColor = fillColor;
-        this.borderColor = borderColor;
     }
 
     @Override

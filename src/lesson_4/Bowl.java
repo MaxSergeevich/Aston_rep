@@ -1,18 +1,10 @@
 package lesson_4;
 
 public class Bowl {
-    private int foodAmount;
+    protected int foodAmount;
 
-    public Bowl(int initialFood) {
-        this.foodAmount = initialFood;
-    }
-
-    public boolean takeFood(int amount) {
-        if (amount <= foodAmount) {
-            foodAmount -= amount;
-            return true;
-        }
-        return false;
+    public Bowl() {
+        this.foodAmount = 0;
     }
 
     public void addFood(int amount) {

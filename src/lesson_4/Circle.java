@@ -1,14 +1,12 @@
 package lesson_4;
 
-public class Circle implements Shape {
+public class Circle extends Figure {
     private double radius;
-    private String fillColor;
-    private String borderColor;
 
-    public Circle(double radius, String fillColor, String borderColor) {
+
+    public Circle(String fillColor, String borderColor, double radius) {
+        super(fillColor, borderColor);
         this.radius = radius;
-        this.fillColor = fillColor;
-        this.borderColor = borderColor;
     }
 
     @Override
