@@ -1,10 +1,18 @@
 import lesson_7_junit_5.Calculator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class NumbersTests {
+
+    private Calculator Calculator;
+
+    @BeforeEach
+    void setUp() {
+        Calculator = new Calculator();
+    }
 
         @Test
         @DisplayName("Equal Numbers")

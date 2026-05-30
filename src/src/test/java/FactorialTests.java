@@ -1,9 +1,17 @@
 import lesson_7_junit_5.Calculator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FactorialTests {
+class FactorialTests {
+    private Calculator Calculator;
+
+    @BeforeEach
+    void setUp() {
+        Calculator = new Calculator();
+    }
+
 
     @Test
     @DisplayName("Factorial 0")
