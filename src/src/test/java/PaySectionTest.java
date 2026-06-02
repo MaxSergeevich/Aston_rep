@@ -36,10 +36,16 @@ public class PaySectionTest extends BaseTest{
     @ValueSource(strings = {"Visa", "Verified By Visa", "MasterCard",
             "MasterCard Secure Code", "Белкарт"})
     public void checkLogos(String expectedLogoName) {
-        List<WebElement> logos = driver.findElements(By.xpath("//section[@class='pay']//img"));
-        logos.stream()
+        List<WebElement> logos = driver.findElements(
+                By.xpath("//section[@class='pay']//div[@class='pay__partners']/ul/li/img"));
+        List<String> altTexts = logos.stream()
                 .map(logo -> logo.getAttribute("alt"))
-                .anyMatch(altText -> altText != null && altText.contains(expectedLogoName));
+                .filter(altText -> altText != null && !altText.isEmpty())
+                .toList();
+        boolean logoFound = altTexts.stream()
+                .anyMatch(altText -> altText.contains(expectedLogoName));
+        assertTrue(logoFound,
+                "Логотип '" + expectedLogoName + "' не найден среди " + altTexts);
     }
 
     @Test
