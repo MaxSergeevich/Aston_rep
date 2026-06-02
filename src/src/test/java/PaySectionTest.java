@@ -17,12 +17,16 @@ public class PaySectionTest extends BaseTest{
     @BeforeEach
     public void homePage(){
         driver.get("https://www.mts.by/");
+        List<WebElement> cookieButtons = driver.findElements(By.xpath("//div[@class='cookie__wrapper']//button[text()='Отклонить']"));
+        if (!cookieButtons.isEmpty() && cookieButtons.get(0).isDisplayed()) {
+            cookieButtons.get(0).click();
+        }
+
     }
 
     @Test
     @DisplayName("Проверка названия секции платежа")
     public void checkSectionTitle(){
-        driver.findElement(By.id("cookie-agree")).click();
         WebElement title = driver.findElement(By.xpath("//section[@class='pay']//h2"));
         Assertions.assertEquals("Онлайн пополнение\nбез комиссии", title.getText());
     }
@@ -41,7 +45,6 @@ public class PaySectionTest extends BaseTest{
     @Test
     @DisplayName("Проверка работоспособности ссылки 'Подробнее о сервисе'")
     public void checkLink(){
-        driver.findElement(By.id("cookie-agree")).click();
         WebElement link = driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/a"));
         link.click();
         String currentUrl = driver.getCurrentUrl();
@@ -51,7 +54,6 @@ public class PaySectionTest extends BaseTest{
     @Test
     @DisplayName("Проверка работы кнопки 'Продолжить'")
     public void checkContinueButton() {
-        driver.findElement(By.id("cookie-agree")).click();
         WebElement phoneField = driver.findElement(By.xpath("//section[@class='pay']//input[@id='connection-phone']"));
         WebElement sumField = driver.findElement(By.xpath("//section[@class='pay']//input[@id='connection-sum']"));
         WebElement emailField = driver.findElement(By.xpath("//section[@class='pay']//input[@id='connection-email']"));
