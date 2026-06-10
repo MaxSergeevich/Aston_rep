@@ -1,5 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import lesson_8.SeleniumDriver;
+import lesson_10.driver.SeleniumDriver;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.chrome.ChromeOptions;
