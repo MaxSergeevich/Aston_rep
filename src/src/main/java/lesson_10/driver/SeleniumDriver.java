@@ -1,24 +1,33 @@
 package lesson_10.driver;
 
-import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.Objects;
 
 public class SeleniumDriver {
+    private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
+    private static ChromeOptions options = new ChromeOptions();
 
-    public static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-
-    @Setter
-    private static ChromeOptions options;
-
+    public static void setOptions(ChromeOptions customOptions) {
+        options = Objects.requireNonNull(customOptions);
+    }
 
     public static WebDriver getInstance() {
-        if (Objects.isNull(driver.get())) {
-            driver.set(new ChromeDriver(options));
+        WebDriver currentDriver = driverThreadLocal.get();
+        if (currentDriver == null) {
+            currentDriver = new ChromeDriver(options);
+            driverThreadLocal.set(currentDriver);
         }
-        return driver.get();
+        return currentDriver;
+    }
+
+    public static void quitDriver() {
+        WebDriver driver = driverThreadLocal.get();
+        if (driver != null) {
+            driver.quit();
+            driverThreadLocal.remove();
+        }
     }
 }
 
