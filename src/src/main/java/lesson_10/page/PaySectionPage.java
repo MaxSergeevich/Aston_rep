@@ -50,14 +50,3 @@ public class PaySectionPage {
     private WebElement arrearsEmailBox;
     String currentUrl = "https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/";
 }
-
-
-
-
-
-
-
-
-
-
-
