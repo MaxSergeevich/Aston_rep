@@ -56,8 +56,8 @@ public class PaySectionSteps {
 
     @Step("Сравниваем полученную ссылку с актуальной")
     public void checkLink() {
-        paySectionPage.getCurrentUrl();
-        assertTrue(true);
+        Assertions.assertEquals(paySectionPage.getCurrentUrl(),
+                "https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/");
     }
 
     @Step ("Получаем логотипы платежных систем")
